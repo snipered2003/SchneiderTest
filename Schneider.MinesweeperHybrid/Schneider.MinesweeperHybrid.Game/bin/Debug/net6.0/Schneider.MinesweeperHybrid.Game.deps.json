@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Schneider.MinesweeperHybrid.Game/1.0.0": {
+        "dependencies": {
+          "Schneider.MinesweeperHybrid.Utilities": "1.0.0"
+        },
+        "runtime": {
+          "Schneider.MinesweeperHybrid.Game.dll": {}
+        }
+      },
+      "Schneider.MinesweeperHybrid.Utilities/1.0.0": {
+        "runtime": {
+          "Schneider.MinesweeperHybrid.Utilities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Schneider.MinesweeperHybrid.Game/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Schneider.MinesweeperHybrid.Utilities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
