@@ -27,6 +27,13 @@ namespace Schneider.MinesweeperHybrid.Game.Board
 
         private void SetBombs(int noOfBombs)
         {
+            int maxNoBombs = (Size * Size) - 2;
+
+            if (noOfBombs > maxNoBombs)
+            {
+                noOfBombs = maxNoBombs;
+            }
+
             for (int i = 0; i < noOfBombs; i++)
             {
                 Random rand = new Random();
