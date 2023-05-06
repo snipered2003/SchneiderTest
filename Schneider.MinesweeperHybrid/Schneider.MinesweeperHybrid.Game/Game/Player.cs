@@ -21,22 +21,22 @@ namespace Schneider.MinesweeperHybrid.Game.Game
             switch (move)
             {
                 case MoveType.left:
-                    if (currentCell.Col == 1)
+                    if (currentCell.Row == 1)
                         return false;
                     currentCell.Row--;
                     break;
                 case MoveType.right:
-                    if (currentCell.Col == boardSize)
+                    if (currentCell.Row > boardSize)
                         return false;
                     currentCell.Row++;
                     break;
                 case MoveType.up:
-                    if (currentCell.Row == boardSize)
+                    if (currentCell.Col > boardSize)
                         return false;
                     currentCell.Col++;
                     break;
                 case MoveType.down:
-                    if (currentCell.Row == 1)
+                    if (currentCell.Col == 1)
                         return false;
                     currentCell.Col--;
                     break;

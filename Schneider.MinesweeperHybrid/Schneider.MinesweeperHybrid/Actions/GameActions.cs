@@ -1,4 +1,5 @@
-﻿using Schneider.MinesweeperHybrid.Game.Enums;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Schneider.MinesweeperHybrid.Game.Enums;
 using Schneider.MinesweeperHybrid.Game.Game;
 using Schneider.MinesweeperHybrid.Utilities.Constants;
 
@@ -10,6 +11,23 @@ namespace Schneider.MinesweeperHybrid.Actions
         {
             game?.SetStartingCell();
             OutputToUser($"{game?.GetPlayerPosition()} - Score({game?.GetScore()}) - Lives({game?.GetLives()})");
+        }
+
+        public static void GameShell(string startGame, IServiceProvider serviceProvider)
+        {
+            if (startGame.ToLower().StartsWith(ProgramConstants.StartVal))
+            {
+                var game = serviceProvider.GetService<IGame>();
+                GameActions.SetUpGame(ref game);
+
+                while (game.IsGameCompleted() != true && !game.IsGameOver())
+                {
+                    GameActions.WhileGameIsRunning(ref game);
+                }
+
+                GameActions.CheckIfGameOverOrCompleted(ref game);
+                Console.ReadLine();
+            }
         }
 
         public static void WhileGameIsRunning(ref IGame game)

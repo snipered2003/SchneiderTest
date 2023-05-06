@@ -1,4 +1,17 @@
-ToDo
--------
-Fix out of range exceptions.  So if your at A1 and you press left, should prevent it.
+Instructions
+--------------
+To start a game, when prompted press letter y.
+
+Move left right, down and up by typing in:
+
+up
+down
+left
+right
+
+All other moves are invalid.
+
+Game is over when you reach the other side.
+
+When you hit a bomb, you will see your lives go down and your score will stay the same.
 
