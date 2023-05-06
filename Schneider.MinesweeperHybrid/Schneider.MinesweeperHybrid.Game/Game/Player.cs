@@ -2,6 +2,7 @@
 using Schneider.MinesweeperHybrid.Models.Board;
 using Schneider.MinesweeperHybrid.Utilities.Constants;
 using Schneider.MinesweeperHybrid.Utilities.Helpers;
+using System.Runtime.CompilerServices;
 
 namespace Schneider.MinesweeperHybrid.Game.Game
 {
@@ -15,28 +16,34 @@ namespace Schneider.MinesweeperHybrid.Game.Game
             this.currentCell = currentCell;
         }
 
-        public void MovePosition(MoveType move)
+        public bool MovePosition(MoveType move, int boardSize)
         {
             switch (move)
             {
                 case MoveType.left:
+                    if (currentCell.Col == 1)
+                        return false;
                     currentCell.Row--;
-
                     break;
                 case MoveType.right:
+                    if (currentCell.Col == boardSize)
+                        return false;
                     currentCell.Row++;
-
                     break;
                 case MoveType.up:
+                    if (currentCell.Row == boardSize)
+                        return false;
                     currentCell.Col++;
-
                     break;
                 case MoveType.down:
+                    if (currentCell.Row == 1)
+                        return false;
                     currentCell.Col--;
                     break;
                 default:
-                    break;
+                    return false;
             }
+            return true;
         }
 
         public string GetPlayerPosition()

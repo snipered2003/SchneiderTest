@@ -15,7 +15,7 @@ namespace Schneider.MinesweeperHybrid.UnitTests.Game.Game
             var expectedPosition = "[A3]";
 
             //Act
-            player.MovePosition(MoveType.up);
+            player.MovePosition(MoveType.up, 8);
 
             //Assert
             Assert.Equal(expectedPosition, player.GetPlayerPosition());

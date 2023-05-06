@@ -27,14 +27,19 @@ namespace Schneider.MinesweeperHybrid.Models
             board.SetPosition(currentCell);
         }
 
-        public void MovePosition(MoveType move)
+        public bool MovePosition(MoveType move)
         {
-            if (currentCell.Col < board.GetSize())
+            if (currentCell.Row < board.GetSize())
             {
-                player.MovePosition(move);
-                board.SetPosition(currentCell);
-                CheckIfCellHasBomb();
+                var result = player.MovePosition(move, board.GetSize());
+                if (result)
+                {
+                    board.SetPosition(currentCell);
+                    CheckIfCellHasBomb();
+                }
+                return result;
             }
+            return false;
         }
 
         public bool IsGameCompleted()

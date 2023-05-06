@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Schneider.MinesweeperHybrid.Actions;
 using Schneider.MinesweeperHybrid.Game.Board;
-using Schneider.MinesweeperHybrid.Game.Enums;
 using Schneider.MinesweeperHybrid.Game.Game;
 using Schneider.MinesweeperHybrid.Models;
 using Schneider.MinesweeperHybrid.Models.Board;
+using Schneider.MinesweeperHybrid.Utilities.Constants;
 
 var serviceProvider = new ServiceCollection()
            .AddSingleton<IGame, MinesweeperHybridGame>()
@@ -11,34 +12,19 @@ var serviceProvider = new ServiceCollection()
            .AddSingleton<IBoard, DefaultBoard>()
            .BuildServiceProvider();
 
-Console.WriteLine("Start a new game?");
+GameActions.OutputToUser(ProgramConstants.StartText);
 var startGame = Console.ReadLine();
 
-if (startGame.ToLower().StartsWith("y"))
+if (startGame.ToLower().StartsWith(ProgramConstants.StartVal))
 {
     var game = serviceProvider.GetService<IGame>();
-    game.SetStartingCell();
-
-    Console.WriteLine($"{game.GetPlayerPosition()} - Score({game.GetScore()}) - Lives({game.GetLives()})");
+    GameActions.SetUpGame(ref game);
 
     while (game.IsGameCompleted() != true && !game.IsGameOver())
     {
-        Console.WriteLine("What's your move?");
-        var position = Console.ReadLine();
-
-        Enum.TryParse(position?.ToLower(), out MoveType move);
-        game.MovePosition(move);
-        game.IsGameCompleted();
-        Console.WriteLine($"{game.GetPlayerPosition()} - Score({game.GetScore()}) - Lives({game.GetLives()})");
+        GameActions.WhileGameIsRunning(ref game);
     }
 
-    if (game.IsGameOver())
-    {
-        Console.WriteLine($"Game Over - You Loose");
-    }
-    else 
-    {
-        Console.WriteLine($"whoo hoo - Game complete.  Your score was {game.GetScore()}");
-    }
+    GameActions.CheckIfGameOverOrCompleted(ref game);
     Console.ReadLine();
 }

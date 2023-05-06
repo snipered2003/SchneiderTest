@@ -4,7 +4,7 @@ namespace Schneider.MinesweeperHybrid.Game.Game
 {
     public interface IPlayer
     {
-        void MovePosition(MoveType move);
+        bool MovePosition(MoveType move, int boardSize);
 
         string GetPlayerPosition();
 

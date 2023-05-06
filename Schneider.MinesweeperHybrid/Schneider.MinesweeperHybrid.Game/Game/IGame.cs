@@ -6,7 +6,7 @@ namespace Schneider.MinesweeperHybrid.Game.Game
     {
         void SetStartingCell();
 
-        void MovePosition(MoveType move);
+        bool MovePosition(MoveType move);
 
         bool IsGameCompleted();
 
