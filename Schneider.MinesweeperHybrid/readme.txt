@@ -15,3 +15,8 @@ Game is over when you reach the other side.
 
 When you hit a bomb, you will see your lives go down and your score will stay the same.
 
+
+Settings
+-----------------
+You can configure the no of bombs and the board size.
+Default board is set to 8.

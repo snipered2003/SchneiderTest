@@ -17,7 +17,7 @@ namespace Schneider.MinesweeperHybrid.Models.Board
 
         public bool HasBomb(Cell cell)
         {
-            return Grid[cell.Row, cell.Col-1].HasBomb;
+            return Grid[cell.Row-1, cell.Col-1].HasBomb;
         }
 
         public int GetSize()

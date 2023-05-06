@@ -1,4 +1,5 @@
-﻿using Schneider.MinesweeperHybrid.Models;
+﻿using Schneider.MinesweeperHybrid.Game.Models;
+using Schneider.MinesweeperHybrid.Models;
 using Schneider.MinesweeperHybrid.Models.Board;
 
 namespace Schneider.MinesweeperHybrid.UnitTests.Game.Board
@@ -36,7 +37,7 @@ namespace Schneider.MinesweeperHybrid.UnitTests.Game.Board
 
         private DefaultBoard CreateStrut()
         {
-            return new DefaultBoard(8);
+            return new DefaultBoard();
         }
     }
 }

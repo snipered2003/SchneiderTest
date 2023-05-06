@@ -6,26 +6,26 @@ using Schneider.MinesweeperHybrid.Utilities.Constants;
 namespace Schneider.MinesweeperHybrid.Actions
 {
     public static class GameActions
-    {
+    {   
         public static void SetUpGame(ref IGame? game)
         {
             game?.SetStartingCell();
             OutputToUser($"{game?.GetPlayerPosition()} - Score({game?.GetScore()}) - Lives({game?.GetLives()})");
         }
 
-        public static void GameShell(string startGame, IServiceProvider serviceProvider)
+        public static void GameShell(string startGame, Startup configuration)
         {
             if (startGame.ToLower().StartsWith(ProgramConstants.StartVal))
             {
-                var game = serviceProvider.GetService<IGame>();
-                GameActions.SetUpGame(ref game);
+                var game = configuration.serviceProvider.GetService<IGame>();
+                SetUpGame(ref game);
 
                 while (game.IsGameCompleted() != true && !game.IsGameOver())
                 {
-                    GameActions.WhileGameIsRunning(ref game);
+                    WhileGameIsRunning(ref game);
                 }
 
-                GameActions.CheckIfGameOverOrCompleted(ref game);
+                CheckIfGameOverOrCompleted(ref game);
                 Console.ReadLine();
             }
         }

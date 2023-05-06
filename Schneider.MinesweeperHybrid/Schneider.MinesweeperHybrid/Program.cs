@@ -1,9 +1,10 @@
-﻿using Schneider.MinesweeperHybrid.Actions;
-using Schneider.MinesweeperHybrid.ServiceProvider;
+﻿using Schneider.MinesweeperHybrid;
+using Schneider.MinesweeperHybrid.Actions;
 using Schneider.MinesweeperHybrid.Utilities.Constants;
 
-var serviceProvider = new Services().provider;
+
+var startup = new Startup();
 
 GameActions.OutputToUser(ProgramConstants.StartText);
 var startGame = Console.ReadLine();
-GameActions.GameShell(startGame, serviceProvider);
+GameActions.GameShell(startGame, startup);

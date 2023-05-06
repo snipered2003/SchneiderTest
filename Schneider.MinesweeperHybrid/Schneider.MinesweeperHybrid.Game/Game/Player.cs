@@ -26,12 +26,12 @@ namespace Schneider.MinesweeperHybrid.Game.Game
                     currentCell.Row--;
                     break;
                 case MoveType.right:
-                    if (currentCell.Row > boardSize)
+                    if (currentCell.Row == boardSize)
                         return false;
                     currentCell.Row++;
                     break;
                 case MoveType.up:
-                    if (currentCell.Col > boardSize)
+                    if (currentCell.Col == boardSize)
                         return false;
                     currentCell.Col++;
                     break;

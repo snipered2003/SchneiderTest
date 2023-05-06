@@ -29,7 +29,7 @@ namespace Schneider.MinesweeperHybrid.Models
 
         public bool MovePosition(MoveType move)
         {
-            if (currentCell.Row < board.GetSize())
+            if (currentCell.Row <= board.GetSize())
             {
                 var result = player.MovePosition(move, board.GetSize());
                 if (result)
